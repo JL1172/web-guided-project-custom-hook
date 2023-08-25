@@ -20,11 +20,11 @@ const useStyles = makeStyles(theme => ({
     width: 200
   }
 }));
-const initialValue = { username: "", email: "" }
+const initialValue = { username: "", email: ""}
 export default function SignupForm() {
   const classes = useStyles();
   const [output, setOutput] = useState([]);
-  const [formData, clearForm, change, submit] = useForm(initialValue, output, setOutput);
+  const [formData, clearForm, change, submit] = useForm("sign-in",initialValue, output, setOutput);
   
   return (
     <div p={2} className="form">
@@ -64,6 +64,7 @@ export default function SignupForm() {
       {output.length > 0 && output.map(n => {
        return <p key = {n.id}>{n.email} {n.username}</p>
       })}
+      {localStorage.username}
     </div>
   );
 }

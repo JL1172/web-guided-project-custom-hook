@@ -1,8 +1,8 @@
-import React, {useState} from "react";
 import axios from "axios"; 
+import { useLocalStorage } from "./useLocalStorage";
 
-export const useForm = (initialValue,output,setOutput) => {
-    const [values,setValues] = useState(initialValue); //*custom hooks are the equivalent to components for this, it's like everything is component based
+export const useForm = (key,initialValue,output,setOutput) => {
+    const [values,setValues] = useLocalStorage(key,initialValue); //*custom hooks are the equivalent to components for this, it's like everything is component based
 
     const clearForm = (e) => {
         if (e) e.preventDefault();
@@ -10,6 +10,7 @@ export const useForm = (initialValue,output,setOutput) => {
     }
 
     const change = (e) => {
+        localStorage.setItem([e.target.name], e.target.value)
        setValues({...values,
     [e.target.name] : e.target.value})
     };
@@ -30,8 +31,16 @@ export const useForm = (initialValue,output,setOutput) => {
 
 
 
-export const useForm1 = (initialValue,callbackFunction) => {
-    const [values,setValues] = useState(initialValue); //*custom hooks are the equivalent to components for this, it's like everything is component based
+
+
+
+
+
+
+
+
+export const useForm1 = (key,initialValue,callbackFunction) => {
+    const [values,setValues] = useLocalStorage(key,initialValue); //*custom hooks are the equivalent to components for this, it's like everything is component based
 
     const clearForm = (e) => {
         if (e) e.preventDefault();
@@ -39,6 +48,7 @@ export const useForm1 = (initialValue,callbackFunction) => {
     }
 
     const change = (e) => {
+        localStorage.setItem([e.target.name], e.target.value)
        setValues({...values,
     [e.target.name] : e.target.value})
     };

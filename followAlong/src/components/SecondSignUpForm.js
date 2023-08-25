@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     width: 200
   }
 }));
-const initialValue = { username: "", email: "" }
+const initialValue = { username1: "", email1:  ""}
 export default function SecondSignUpForm() {
   const classes = useStyles();
   const [output, setOutput] = useState(null);
@@ -37,12 +37,13 @@ export default function SecondSignUpForm() {
                 return { message, id : Date.now()}
             } return n; 
         })
+        //!could've done newObj.splice(0,1,replace with message)
         setOutput(inputObj)
     })
     .catch(err=> console.log(err))
   }
-  const [formData, clearForm, change,submit] = useForm1(initialValue,callbackFunction);
-  console.log(output)
+  const [formData, clearForm, change,submit] = useForm1("second-sign-in",initialValue,callbackFunction);
+
   return (
     <div p={2} className="form">
       <form onSubmit={submit}>
@@ -52,8 +53,8 @@ export default function SecondSignUpForm() {
             id="outlined-name"
             label="User Name"
             className={classes.textField}
-            name="username"
-            value={formData.username}
+            name="username1"
+            value={formData.username1}
             onChange={change}
             margin="normal"
             variant="outlined"
@@ -62,8 +63,8 @@ export default function SecondSignUpForm() {
             id="outlined-name"
             label="Email"
             className={classes.textField}
-            name="email"
-            value={formData.email}
+            name="email1"
+            value={formData.email1}
             onChange={change}
             margin="normal"
             variant="outlined"
@@ -80,7 +81,6 @@ export default function SecondSignUpForm() {
       </form>
       {output && output[0].message }
       {output && output.map(n => {
-        console.log(n)
        return <p key = {n.id}>{n.email} {n.first_name}</p>
       })}
     </div>

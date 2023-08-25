@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <h1>Custom Hooks are Magic 🧙‍♂️</h1>
       <SignupForm />
-      <SecondSignUpForm />
+      {/* <SecondSignUpForm /> */}
     </div>
   );
 }
