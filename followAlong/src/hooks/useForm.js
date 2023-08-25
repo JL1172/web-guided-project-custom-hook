@@ -10,9 +10,8 @@ export const useForm = (key,initialValue,output,setOutput) => {
     }
 
     const change = (e) => {
-        localStorage.setItem([e.target.name], e.target.value)
        setValues({...values,
-    [e.target.name] : e.target.value})
+    [e.target.name] : e.target.value}) //**whats happening in background is that local storage is also being updated */
     };
 
     //!import info, see another way to deal with this, every form could have a different request with what they want to do with their data. THis is good if a bunch of forms want to do this
